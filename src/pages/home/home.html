@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="center">
+      Tic-Tac-Toe
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="image">
+
+  <div class="filler">
+
+  </div>
+
+  <table>
+      <form (ngSubmit)="StartGame()">
+        <tr><td><input height="100" type="text" placeholder="Enter Player 1 name" [(ngModel)]="playerOneName" name="playerOneName"/></td></tr>
+        <tr><td><input type="text" placeholder="Enter Player 2 name" [(ngModel)]="playerTwoName" name="playerTwoName"/></td></tr>
+        <tr style="height:100px;"></tr>
+        <tr><td><button ion-button type="submit" block>Start game</button></td></tr>
+        <tr style="height:100px;"></tr>
+      </form>
+  </table>
+
+</ion-content>

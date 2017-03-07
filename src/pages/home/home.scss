@@ -1,0 +1,29 @@
+page-home {
+    
+    .image{
+            background-image: url("../../assets/images/background-8.jpg");
+    }
+
+    table {
+        margin-left:auto;
+        margin-right:auto;
+
+        tr {
+            width: auto;
+            height:auto;
+        }
+        td {
+            height:auto;
+            width: auto;
+            font-size: 14px;
+        }
+    }
+
+    .center{
+     text-align:$Alignment;
+
+    }
+    .filler {
+        height:150px;
+    }
+}
