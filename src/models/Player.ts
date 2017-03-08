@@ -10,6 +10,8 @@ class player
         this.score = score;
         this.character = character;
     }
+
+    //Update score method, to increment player scores when winning
     UpdateScore(score:number = null)
     {
         if(score)

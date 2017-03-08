@@ -1,9 +1,17 @@
 page-game {
-
-        .image{
+    @mixin P-design($size) {
+        font-family: Arial Black, Gadget, sans-serif;
+        font-size: $size;
+    }
+    .image{
             background-image: url("../../assets/images/background-8.jpg");
     }
-
+    p {
+         @include P-design(30px);
+         .bobob {
+             font-size:20px;
+         }
+    }
     .boarded {
         table{
             td {

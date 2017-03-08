@@ -12,14 +12,16 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 @Injectable()
 export class SymbolToPlayer implements PipeTransform {
 
-  transform(Bob:string):string {
+  transform(value:string):string {
       let newStr: string = "";
 
-      if(Bob == "O")
+      //Sets the returned string to either be an 0 image or X image
+      //based on the X and Y charactes in the output of the board array
+      if(value == "O")
       {
           newStr = "../../assets/images/O.png";
       }
-      if(Bob == "X")
+      if(value == "X")
       {
           newStr = "../../assets/images/X.png";
       }

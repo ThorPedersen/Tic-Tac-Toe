@@ -12,11 +12,13 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 @Injectable()
 export class NameChangePipe implements PipeTransform {
 
-  transform(Bob:string):string {
+  transform(value:string):string {
+
+    //Creates 2 strings to put values into
     let lowerCaseString: string = "";
     let UppercaseString: string = "";
 
-    lowerCaseString = Bob.toLowerCase();
+    lowerCaseString = value.toLowerCase();
 
     UppercaseString = lowerCaseString.charAt(0).toUpperCase() + lowerCaseString.slice(1)
 

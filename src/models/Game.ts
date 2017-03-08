@@ -16,44 +16,56 @@ class game {
     winningbackground:number;
     backgroundcolor:string = "red";
 
+    //Creates a game with 2 players
     constructor(player1:string, player2:string, private alertCtrl: AlertController)
     {     
         this.player1 = new player(player1, 0, "X");
         this.player2 = new player(player2, 0, "O");
         this.board = new board();
     }
-    setPlayerName(playerName1:string, playerName2:string)
-    {
-        this.player1 = new player(playerName1, 0, "X");
-        this.player2 = new player(playerName2, 0, "O");
-    }
+
+    //Switches player turns by alternating between a true false boolean
     SwitchPlayer()
     {
         this.playerTurn = !this.playerTurn;
     }
+
+    //Adds a character to the board
     addingCharacter(x:number, y:number)
     {
-        console.log(this.winningcondition);
+        //if the winnincondition is false then the board is locked to adding more characters.
         if(this.winningcondition == true)
         {
+            //Checks for player turn
             let character:string = this.playerTurn ? this.player1.character : this.player2.character;
             if(this.board.addCharacter(x, y, character)) {
                 this.SwitchPlayer();
                 this.counter++;
+
+                //If the board has 9 characters in it, and the Check method to see if there are 3 characters in a row is false
+                //then the board is full and the game will be a tie         
                 if(this.counter == 9)
                 {
-                    this.Tie();
-                    this.winningcondition = false;
+                    if(this.Check() == false)
+                    {
+                        this.Tie();
+                        this.winningcondition = false;
+                    }
                 }
             };
         }
     }
+
+    //Clears board, resets counter and winning condition
     ClearBoard()
     {
         this.board.clear();
         this.winningcondition = false;
         this.counter = 0;
     }
+
+    //Checks 3 tiles in a row, to see if there are 3 of the same characters in them.
+    //Also changes winningbackground number to change the line overlay of the winning row.
     Check()
     {
         if(this.board.tiles[0][0] == this.board.tiles[0][1] && this.board.tiles[0][1] == this.board.tiles[0][2] && this.board.tiles[0][0] != null){
@@ -105,6 +117,8 @@ class game {
         return false;
 
     }
+
+    //Looks for a winner
     FindWinner()
     {    
         if(this.winningcondition == true)
@@ -124,17 +138,23 @@ class game {
             this.winningcondition = false;
         }
     }
+
+    //Unused second method to demonstrate who won last round
     congratulationsSecondWay(name:string)
     {
         this.winner = name + " won last round";
     }
+
+    //Promt method that pops up who won and on what coordinates
     Congratulations(name:string) {
         let prompt = this.alertCtrl.create({
-          message: name + " won on coordinates: " + this.winningCoordinates
+          message: name + " won! "
         });
       prompt.present();
       this.winningCoordinates = "";
     }
+
+    //Prompt method that indicates if the game is a tie
     Tie()
     {
         let prompt = this.alertCtrl.create({
@@ -143,6 +163,7 @@ class game {
       prompt.present();
     }
 
+    //Reset method, that resets player scores, clears board, counter and winning condition
     Reset()
     {
         this.player1.UpdateScore();
@@ -151,6 +172,8 @@ class game {
         this.winningcondition = true;
         this.counter = 0;
     }
+
+    //New game method, that clears board, counter and winning condition
     New()
     {
         this.ClearBoard();

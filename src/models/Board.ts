@@ -7,6 +7,8 @@ class board
     {
         this.clear();
     }
+
+    //Checks to see if the specific tile in the board array has a character in it.
     Occupied(x:number, y:number)
     {
         if(this.tiles[x][y] == null){
@@ -14,6 +16,8 @@ class board
         }
         return true;
     }
+
+    //Adds a character in a specific tile, and increments character number
     addCharacter(x:number, y:number, character:string)
     {
         if(!this.Occupied(x,y)) {
@@ -23,6 +27,8 @@ class board
         }
         return false;
     }
+
+    //Clears the board array, and resets characters number
     clear()
     {
         this.tiles = [];
@@ -35,6 +41,8 @@ class board
         }
         this.Characters = 0;
     }
+
+    //fetches the specific character in the board array
     GetCharacter(x:number, y:number)
     {
         return this.tiles[x][y];

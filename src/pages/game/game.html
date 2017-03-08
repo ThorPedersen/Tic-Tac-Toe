@@ -7,54 +7,45 @@
 </ion-header>
 
 <ion-content class="image">
+  <ion-grid>
+    <ion-row style="height: 90px; text-align: center" >
+      <ion-col col-33><p style="vertical-align: middle">{{Game.player1.name | NameChangePipe}}</p></ion-col>
+      <ion-col col-33><img height="80px;" style="vertical-align: middle" src="../../assets/images/vs-icon.png"></ion-col>
+      <ion-col col-33><p>{{Game.player2.name | NameChangePipe}}</p></ion-col>
+    </ion-row>
+    <ion-row style="height:40px; text-align: center;">
+      <ion-col col-33 ><p *ngIf="Game.player1">{{Game.player1.score}}</p></ion-col>
+      <ion-col col-33><p class="bobob"> Points </p></ion-col>
+      <ion-col col-33 col-offset-33><p *ngIf="Game.player1">{{Game.player2.score}}</p></ion-col>
+    </ion-row>
 
-<div>
-      <h2>Players</h2>
+    <div class="boarded" style="margin-top: 100px;">
+          <table class="circle" boarded border="1">
+            <tr>
+              <td block (click)="CellClick(0,2)"> <div *ngIf="Game.board.tiles[0][2]"><img src="{{ Game.board.tiles[0][2] | SymbolToPlayer }}"/></div></td>
+              <td block (click)="CellClick(0,1)"> <div *ngIf="Game.board.tiles[0][1]"><img src="{{ Game.board.tiles[0][1] | SymbolToPlayer }}"/></div></td>
+              <td block (click)="CellClick(0,0)"> <div *ngIf="Game.board.tiles[0][0]"><img src="{{ Game.board.tiles[0][0] | SymbolToPlayer }}"/></div></td>
+            </tr>
+            <tr>
+              <td block (click)="CellClick(1,2)"> <div *ngIf="Game.board.tiles[1][2]"><img src="{{ Game.board.tiles[1][2] | SymbolToPlayer }}"/></div></td>
+              <td block (click)="CellClick(1,1)"> <div *ngIf="Game.board.tiles[1][1]"><img src="{{ Game.board.tiles[1][1] | SymbolToPlayer }}"/></div></td>
+              <td block (click)="CellClick(1,0)"> <div *ngIf="Game.board.tiles[1][0]"><img src="{{ Game.board.tiles[1][0] | SymbolToPlayer }}"/></div></td>
+            </tr>
+            <tr>
+              <td block (click)="CellClick(2,2)"> <div *ngIf="Game.board.tiles[2][2]"><img src="{{ Game.board.tiles[2][2] | SymbolToPlayer }}"/></div></td>
+              <td block (click)="CellClick(2,1)"> <div *ngIf="Game.board.tiles[2][1]"><img src="{{ Game.board.tiles[2][1] | SymbolToPlayer }}"/></div></td>
+              <td block (click)="CellClick(2,0)"> <div *ngIf="Game.board.tiles[2][0]"><img src="{{ Game.board.tiles[2][0] | SymbolToPlayer }}"/></div></td>
+            </tr>
+          </table>
+          <div style="position:absolute; height:auto; width:auto; top:220px;" *ngIf="!Game.winningcondition"><img height="170px" src="../../assets/images/{{ Game.winningbackground }}.png"></div>
+      </div>
 
-      <table>
-        <tr>
-      <td><p class="left" *ngIf="Game.player1">Player 1: {{Game.player1.name | NameChangePipe}}</p></td><td><p *ngIf="Game.player1">Score: {{Game.player1.score}}</p></td>
-        </tr>
-        <tr>
-      <td><p class="left" *ngIf="Game.player2">Player 2: {{Game.player2.name | NameChangePipe}}</p></td><td><p *ngIf="Game.player2">Score: {{Game.player2.score}}</p></td>
-        </tr>
-      <tr>
-      <td><p class="left">Winner last round:</p></td><td><p class="left" *ngIf="Game.winner">{{Game.winner | NameChangePipe}}</p></td>
-        </tr>
-      </table>
-</div>
+    <div>    
+        <button ion-button color="primary" block (click)="NewGame()">New game</button>
+    </div>
 
-<div class="boarded">
-      <table class="circle" boarded border="1">
-        <tr>
-          <td block (click)="CellClick(0,2)"> <div *ngIf="Game.board.tiles[0][2]"><img src="{{ Game.board.tiles[0][2] | SymbolToPlayer }}"/></div></td>
-          <td block (click)="CellClick(0,1)"> <div *ngIf="Game.board.tiles[0][1]"><img src="{{ Game.board.tiles[0][1] | SymbolToPlayer }}"/></div></td>
-          <td block (click)="CellClick(0,0)"> <div *ngIf="Game.board.tiles[0][0]"><img src="{{ Game.board.tiles[0][0] | SymbolToPlayer }}"/></div></td>
-        </tr>
-        <tr>
-          <td block (click)="CellClick(1,2)"> <div *ngIf="Game.board.tiles[1][2]"><img src="{{ Game.board.tiles[1][2] | SymbolToPlayer }}"/></div></td>
-          <td block (click)="CellClick(1,1)"> <div *ngIf="Game.board.tiles[1][1]"><img src="{{ Game.board.tiles[1][1] | SymbolToPlayer }}"/></div></td>
-          <td block (click)="CellClick(1,0)"> <div *ngIf="Game.board.tiles[1][0]"><img src="{{ Game.board.tiles[1][0] | SymbolToPlayer }}"/></div></td>
-        </tr>
-        <tr>
-          <td block (click)="CellClick(2,2)"> <div *ngIf="Game.board.tiles[2][2]"><img src="{{ Game.board.tiles[2][2] | SymbolToPlayer }}"/></div></td>
-          <td block (click)="CellClick(2,1)"> <div *ngIf="Game.board.tiles[2][1]"><img src="{{ Game.board.tiles[2][1] | SymbolToPlayer }}"/></div></td>
-          <td block (click)="CellClick(2,0)"> <div *ngIf="Game.board.tiles[2][0]"><img src="{{ Game.board.tiles[2][0] | SymbolToPlayer }}"/></div></td>
-        </tr>
-      </table>
-      <div style="position:absolute; height:170px; width:330px; top:160px;" *ngIf="!Game.winningcondition"><img src="../../assets/images/{{ Game.winningbackground }}.png">1</div>
-  </div>
-
-<div>
-   
-    <button ion-button color="primary" block (click)="NewGame()">New game</button>
-
-</div>
-<div>
-   
-    <button ion-button color="primary" block (click)="ResetGame()">Reset game</button>
-
-</div>
-
-
+    <div>   
+        <button ion-button color="primary" block (click)="ResetGame()">Reset game</button>
+    </div>
+  </ion-grid>
 </ion-content>

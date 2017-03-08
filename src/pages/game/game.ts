@@ -25,20 +25,26 @@ export class GamePage {
     this.Game = new game(this.PlayerOneName, this.PlayerTwoName, alertCtrl);
   }
 
-    public CellClick(x,y)
-    {          
-          this.Game.addingCharacter(x,y);
-          if(this.Game.Check()) {
-            this.Game.FindWinner();
-          }
+  //Cell click method for adding characters. Calls the game instance.
+  public CellClick(x,y)
+  {          
+    this.Game.addingCharacter(x,y);
+    
+    if(this.Game.Check()) {
+      this.Game.FindWinner();
     }
-    public ResetGame()
-    {          
-        this.Game.Reset();
+  }
+
+  //Reset method. Resets board and score.
+  public ResetGame()
+  {          
+      this.Game.Reset();
         
-    }
-    public NewGame()
-    {
-        this.Game.New();
-    }
+  }
+
+  //New game method. Resets board.
+  public NewGame()
+  {
+      this.Game.New();
+  }
 }

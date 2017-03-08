@@ -1,25 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <ion-title class="center">
+    <ion-title>
       Tic-Tac-Toe
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="image">
+  <ion-grid>
+    <ion-item class="Background">
+        <h1>TIC-TAC-TOE</h1>
+    </ion-item>
 
-  <div class="filler">
+    <form (ngSubmit)="StartGame()">
+    <ion-list style="margin-top:100px">
+      <ion-item class="Background">
+        <ion-label fixed style="color:black"><i class="fa fa-user-o" aria-hidden="true"></i> Player 1</ion-label>
+        <ion-input type="text" placeholder="Type a name..." [(ngModel)]="playerOneName" name="playerOneName"></ion-input>
+      </ion-item>
 
-  </div>
+      <ion-item class="Background">
+        <ion-label fixed style="color:black"><i class="fa fa-user-o" aria-hidden="true"></i> Player 2</ion-label>
+        <ion-input type="text" placeholder="Type a name..." [(ngModel)]="playerTwoName" name="playerTwoName"></ion-input>
+      </ion-item>
 
-  <table>
-      <form (ngSubmit)="StartGame()">
-        <tr><td><input height="100" type="text" placeholder="Enter Player 1 name" [(ngModel)]="playerOneName" name="playerOneName"/></td></tr>
-        <tr><td><input type="text" placeholder="Enter Player 2 name" [(ngModel)]="playerTwoName" name="playerTwoName"/></td></tr>
-        <tr style="height:100px;"></tr>
-        <tr><td><button ion-button type="submit" block>Start game</button></td></tr>
-        <tr style="height:100px;"></tr>
-      </form>
-  </table>
+      <button ion-button type="submit" style="margin-top:40px; height: 50px;" block>Start game</button>
 
+    </ion-list>
+    </form>
+
+  </ion-grid>
 </ion-content>

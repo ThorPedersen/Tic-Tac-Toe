@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { game } from '../../models/Game';
 import { GamePage } from '../game/game';
 
@@ -15,9 +15,11 @@ export class HomePage {
   public playerOneName:string;
   public playerTwoName:string;
 
-  constructor(public navCtrl: NavController, private alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController) {
 
   }
+
+  //Navigates to gamepage, while taking names from ion inputs and puts them into parameters
   StartGame() {
     console.log(this.playerOneName, this.playerTwoName);
     this.navCtrl.push(GamePage, {
